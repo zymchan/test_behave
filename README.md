@@ -1,6 +1,8 @@
 # test_behave
 
-
+```
+pip install -r requirement.txt
+```
 
 
 ```
