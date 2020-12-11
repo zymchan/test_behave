@@ -4,8 +4,7 @@ Feature: Task 2
   extract the relative humidity (e,g, 60 - 85%) for the day after tomorrow.
 
   Scenario: Extract the relative humidity for the day after tomorrow from the API response
-      Given get current time as <time>
-      When I send get request to http://www.hko.gov.hk/json/DYN_DAT_MINDS_FND.json?<time>
+      When I send get request to http://pda.weather.gov.hk/locspc/android_data/fnd_uc.xml
       Then The status of the request should be 200
       And Print the relative humidity for the day after tomorrow
 
