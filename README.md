@@ -11,7 +11,7 @@
 
 ### test_behave
 
-> Using pip install the requement library
+> Using pip install the python library
 ```
 pip install -r requirement.txt
 ```
