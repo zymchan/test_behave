@@ -1,9 +1,13 @@
 ### Prepare
-Java Enviroment
-Android SDK Enviroment
-Nodejs
-Appium
-Python3 Enviroment
+* Java Enviroment
+
+* Android SDK Enviroment
+
+* Nodejs
+
+* Appium
+
+* Python3 Enviroment
 
 ### test_behave
 
