@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from urllib import request
 import json
 import requests
@@ -35,6 +36,6 @@ def step_impl(context):
     """
     response = tempDict['response']
     # print(response.text)
-    min_humidity = json.loads(response.text).get('DYN_DAT_MINDS_FND').get('Day2MinRH').get('Value_Eng')
-    max_humidity = json.loads(response.text).get('DYN_DAT_MINDS_FND').get('Day2MaxRH').get('Value_Eng')
+    min_humidity = json.loads(response.text).get('forecast_detail')[2].get('min_rh')
+    max_humidity = json.loads(response.text).get('forecast_detail')[2].get('max_rh')
     print('The relative humidity for the day after tomorrow is: %s - %s%%' % (min_humidity,max_humidity))
