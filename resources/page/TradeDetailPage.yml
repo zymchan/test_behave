@@ -1,0 +1,2 @@
+dropdown_wrapper:
+  - xpath: //div[@class='symbol-dropdown-wrapper']//div[@class='toggle']

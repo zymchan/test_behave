@@ -1,31 +1,49 @@
-import os
-from time import sleep
+import allure
+from appium import webdriver as appium
+from selenium import webdriver
 
-from appium import webdriver
+from features.common.frame import init_data
 
 
 def before_all(context):
-    # context.config.setup_logging()
-    pass
+    context.config.setup_logging()
+
+
+def before_scenario(context, scenario):
+    # initial test data, add data attribute to context
+    feature_name = scenario.feature.name
+    scenario_name = scenario.name.split(' -- @')[0]
+    test_data = init_data(feature_name, scenario_name)
+    context.data = test_data
+    # deal with tags
+    deal_tag_for_setup(context, scenario.tags)
 
 
 def before_feature(context, feature):
-    if 'android' in feature.tags:
-        context.driver = webdriver.Remote(
-            command_executor='http://127.0.0.1:4723/wd/hub',
-            desired_capabilities={
-                'platformName': 'Android',
-                'noReset': True,
-                'appActivity': 'hko.MyObservatory_v1_0.AgreementPage',
-                'appPackage': 'hko.MyObservatory_v1_0'
-            }
-        )
-    elif 'ios' in feature.tags:
-        raise Exception("ios is not covered now")
+    deal_tag_for_setup(context, feature.tags)
 
 
 def after_feature(context, feature):
-    if 'android' in feature.tags:
-        sleep(1)
-        context.driver.save_screenshot("features/reports/screen_final.png")
+    deal_tag_for_teardwon(context, feature.tags)
+
+
+def after_scenario(context, scenario):
+    deal_tag_for_teardwon(context, scenario.tags)
+
+
+def after_step(context, step):
+    if step.status == 'failed':
+        allure.attach(context.driver.get_screenshot_as_png(),
+                      name='screenshot',
+                      attachment_type=allure.attachment_type.PNG)
+
+
+def deal_tag_for_setup(context, tags):
+    if 'chrome' in tags:
+        context.driver = webdriver.Chrome()
+
+
+def deal_tag_for_teardwon(context, tags):
+    if 'chrome' in tags:
         context.driver.quit()
+

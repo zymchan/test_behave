@@ -1,0 +1,6 @@
+markets_title:
+  - xpath: //h2[text()='Markets']
+
+cro_tab:
+  - xpath: //div[@class='e-tabs']/div/div[text()='CRO']
+  - xpath: //div[contains(@class,'e-tabs__nav-item') and text()='CRO']
