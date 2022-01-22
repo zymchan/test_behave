@@ -14,7 +14,7 @@ pip install -r requirement.txt
  behave features/navi_to_trade_page.feature 
 ```
 
-> Run api test
+> Run api task
 ```
 python test_api.py  
 ```
