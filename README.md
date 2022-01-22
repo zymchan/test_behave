@@ -1,13 +1,6 @@
 ### Prepare
-* Java Enviroment
-
-* Android SDK Enviroment
-
-* Nodejs
-
-* Appium
-
 * Python3 Enviroment
+* download chromedriver to you %PATH%
 
 ### test_behave
 
@@ -16,12 +9,12 @@
 pip install -r requirement.txt
 ```
 
-> Run android test
+> Run web task
 ```
-behave test_android.feature
+ behave features/navi_to_trade_page.feature 
 ```
 
-> Run api test
+> Run api task
 ```
-behave test_api.feature
+python test_api.py  
 ```
