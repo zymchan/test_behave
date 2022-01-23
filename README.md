@@ -18,3 +18,10 @@ pip install -r requirement.txt
 ```
 python test_api.py  
 ```
+
+> Run behave with allure report
+```
+behave -f allure_behave.formatter:AllureFormatter -o report ./features
+
+allure serve report
+```
